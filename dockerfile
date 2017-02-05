@@ -10,7 +10,8 @@ RUN apt-get update
 RUN apt-get install -y crossbuild-essential-armhf
 
 # perpare build dependencies
-RUN apt-get install -y sudo git fakeroot devscripts cmake vim qemu-user-static binfmt-support dh-make dh-exec
+RUN apt-get install -y sudo git fakeroot devscripts cmake vim qemu-user-static binfmt-support dh-make dh-exec \
+	pkg-kde-tools
 
 RUN apt-get build-dep -y -a armhf libdrm
 RUN apt-get build-dep -y -a armhf xorg-server
@@ -20,6 +21,11 @@ libgstreamermm-1.0-dev:armhf libgstreamerd-3-dev:armhf libqt5gstreamer-dev:armhf
 libxfont1-dev:armhf libxxf86dga-dev:armhf
 
 RUN cp /usr/lib/pkgconfig/xf86dgaproto.pc /usr/lib/arm-linux-gnueabihf/pkgconfig/xf86dgaproto.pc 
+
+## qt-multimedia
+RUN apt-get install -y qt5-qmake qt5-qmake:armhf qtbase5-dev:armhf qttools5-dev-tools:armhf qtbase5-dev-tools:armhf libpulse-dev:armhf \
+	qtbase5-private-dev:armhf qtbase5-dev:armhf libasound2-dev:armhf libqt5quick5:armhf libqt5multimediaquick-p5:armhf qtdeclarative5-dev:armhf \
+	libopenal-dev:armhf qtmultimedia5-examples:armhf
 
 # perpare rockchip's header files
 RUN apt-get install -y wget
