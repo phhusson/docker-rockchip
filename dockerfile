@@ -10,7 +10,7 @@ RUN apt-get update
 RUN apt-get install -y crossbuild-essential-armhf
 
 # perpare build dependencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get install -y \
 	sudo git fakeroot devscripts cmake vim qemu-user-static binfmt-support dh-make dh-exec \
 	pkg-kde-tools device-tree-compiler bc cpio parted dosfstools mtools libssl-dev
 
